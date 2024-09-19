@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Namespace
+kind: Deployment
 metadata:
   name: jupyter-dp
   namespace: jupyter
@@ -15,10 +15,10 @@ spec:
       labels:
         app: jupyter-pods
     spec:
-      container:
+      containers:
       - name: jupyter-container
         image: jupyter/minimal-notebook:2022-12-05
         ports:
-        - containerport: 8888
+        - containerPort: 8888
         command: ["start-notebook.sh"]
         args: ["--NotebookApp.token=''"]
